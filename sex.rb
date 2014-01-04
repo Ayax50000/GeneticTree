@@ -12,4 +12,7 @@ module Sex
    end
   end
 
+  def self.all
+    [:man,:woman]
+  end
 end

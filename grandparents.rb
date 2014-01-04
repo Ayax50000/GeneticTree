@@ -4,7 +4,7 @@ class GrandParent < GreatGrandParent
 
 end
 
-abue = GrandParent.new("Jose Martinez",1)
+abue = GrandParent.new("Jose chavez",1)
 abue.add
 abue.add
 #abue.all

@@ -3,7 +3,7 @@ require_relative 'grandparents'
 class Parent < GrandParent
 
 end
-abue = Parent.new("Jose Martinez",1)
+abue = Parent.new("Jose Mejia",1)
 abue.add
 abue.add
 abue.all

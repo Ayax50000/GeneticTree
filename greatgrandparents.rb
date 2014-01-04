@@ -42,9 +42,9 @@ include Sex
   end
 
   def search()
-    @@relatives.each do |generation|
+    @@relatives.each do |clas|
       Sex.all.each do |sex|
-        puts "is one of your #{generation[0]}" if generation[1][sex].include? @name
+        puts "is one of #{clas[0]} generation" if clas[1][sex].include? @name
       end
     end
   end
@@ -75,8 +75,3 @@ class NilClass
 
 end
 
-abue = GreatGrandParent.new("Jose Martinez",1)
-abue.add
-abue.add
-#abue.all
-#abue.all_sex

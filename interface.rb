@@ -4,7 +4,7 @@ require_relative 'greatgrandparents'
 require_relative 'equalparents'
 
 def  interface
-  pu ts "What do you like to do
+  puts "What do you like to do
           1   - add Great Grand Mother
           2   - add Great Grand Father
           3   - add Grand Mother
@@ -114,6 +114,7 @@ while input != 0
     when   12 then go_back do
         great = GrandParent.new(2)
         great.all_sex
+      end
     when   13 then go_back do
         great = GrandParent.new(1)
         great.all_sex

@@ -42,8 +42,8 @@ include Sex
 
   def search()
     @@relatives.each do |generation|
-      generation[1].each do |name|
-       puts "is your #{generation[0]}" if name == @name
+      generation.each do |names|
+        puts names[0]
       end
     end
   end

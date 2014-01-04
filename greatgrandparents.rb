@@ -47,6 +47,23 @@ include Sex
       end
     end
   end
+
+  def self.tree
+    order = [:GreatGrandParents,:GrandParents,:Parents,:EqualRelatives]
+    order.each do |clas|
+      if @@relatives[clas] != nil
+        puts "\n#{clas}"
+        @@relatives[clas].each do |sex|
+          sex.each do |names|
+            if (names != nil && names != :man && names != :woman)
+              names.each {|name| puts name}
+            end
+          end
+        end
+      end
+    end
+  end
+
 end
 
 abue = GreatGrandParent.new("Jose Martinez",1)
@@ -55,3 +72,4 @@ abue.add
 abue.all
 abue.all_sex
 abue.search
+GreatGrandParent.tree

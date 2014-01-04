@@ -4,19 +4,47 @@ class GreatGrandParent
 
 include Sex
 
-  def initialize(name,sex)
+  @@relatives = {GreatGrandParents: {woman: nil,man: nil}}
+
+  def initialize(name = "",sex)
     @name = name.upcase
     @sex = check(sex)
+    @clas = "#{self.class}s".to_sym
+    @super = "#{self.class.superclass}s".to_sym
   end
 
   def add
-
+    if @clas == :GreatGrandParents
+      if @@relatives[@clas][@sex] == nil
+        @@relatives[@clas][@sex] = [@name]
+      else
+        puts "operation not posible"
+      end
+    elsif @@relatives[@super] != nil
+      @@relatives[@clas][@sex] ||= []
+      @@relatives[@clas][@sex] << @name
+    else
+      puts "you need first to add a #{@super}"
+    end
   end
 
-  def show
+  def all
+    @@relatives[@clas].each do |name|
+      puts name[1]
+    end
+  end
 
+  def all_sex
+    @@relatives[@clas][@sex].each do |name|
+      puts name
+    end
   end
 
 end
 abue = GreatGrandParent.new("Jose Martinez",1)
-p abue
+abue.add
+abue.add
+abue.all
+abue.all_sex
+
+

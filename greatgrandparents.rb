@@ -1,8 +1,22 @@
-def class GreatGrandParents
+require_relative 'sex'
 
-  @sex = {man:[nil,0], woman:[nil,0]}
+class GreatGrandParent
+
+include Sex
 
   def initialize(name,sex)
+    @name = name.upcase
+    @sex = check(sex)
+  end
+
+  def add
 
   end
+
+  def show
+
+  end
+
 end
+abue = GreatGrandParent.new("Jose Martinez",1)
+p abue

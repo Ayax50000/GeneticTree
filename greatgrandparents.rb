@@ -21,6 +21,7 @@ include Sex
         puts "operation not posible"
       end
     elsif @@relatives[@super] != nil
+      @@relatives[@clas] ||= {}
       @@relatives[@clas][@sex] ||= []
       @@relatives[@clas][@sex] << @name
     else
@@ -43,7 +44,7 @@ include Sex
   def search()
     @@relatives.each do |generation|
       generation[1].each do |name|
-       puts "is your #{generation[0]}" if name == @name
+       puts "is your #{generation[0]}" if name[1] = @name
       end
     end
   end
@@ -69,7 +70,5 @@ end
 abue = GreatGrandParent.new("Jose Martinez",1)
 abue.add
 abue.add
-abue.all
-abue.all_sex
-abue.search
-GreatGrandParent.tree
+#abue.all
+#abue.all_sex

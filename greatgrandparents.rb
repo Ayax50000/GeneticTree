@@ -30,15 +30,11 @@ include Sex
   end
 
   def all
-    @@relatives[@clas].each do |name|
-      puts name[1]
-    end
+    @@relatives[@clas].each { |name| puts name[1]}
   end
 
   def all_sex
-    @@relatives[@clas][@sex].each do |name|
-      puts name
-    end
+    @@relatives[@clas][@sex].each { |name| puts name}
   end
 
   def search()
@@ -74,4 +70,3 @@ class NilClass
   end
 
 end
-

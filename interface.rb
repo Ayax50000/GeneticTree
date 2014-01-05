@@ -47,12 +47,12 @@ def ask_name
   yield name
 end
 
-def add(clas,name,sex)
-  great = clas.new(name,sex)
+def add(klass,name,sex)
+  great = klass.new(name,sex)
   great.add
 end
 
-def all(clas,sex,filter)
+def all(klass,sex,filter)
   great = GreatGrandParent.new(2)
   (filter)? great.all_sex : great.all
 end

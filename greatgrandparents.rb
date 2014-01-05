@@ -9,48 +9,48 @@ include Sex
   def initialize(name = "",sex)
     @name = name.upcase
     @sex = check(sex)
-    @clas = "#{self.class}s".to_sym
+    @klass = "#{self.class}s".to_sym
     @super = "#{self.class.superclass}s".to_sym
   end
 
   def add
-    if @clas == :GreatGrandParents
-      if @@relatives[@clas][@sex] == nil
-        @@relatives[@clas][@sex] = [@name]
+    if @klass == :GreatGrandParents
+      if @@relatives[@klass][@sex] == nil
+        @@relatives[@klass][@sex] = [@name]
       else
         puts "operation not posible"
       end
     elsif @@relatives[@super] != nil
-      @@relatives[@clas] ||= {}
-      @@relatives[@clas][@sex] ||= []
-      @@relatives[@clas][@sex] << @name
+      @@relatives[@klass] ||= {}
+      @@relatives[@klass][@sex] ||= []
+      @@relatives[@klass][@sex] << @name
     else
       puts "you need first to add a #{@super}"
     end
   end
 
   def all
-    @@relatives[@clas].each { |name| puts name[1]}
+    @@relatives[@klass].each { |name| puts name[1]}
   end
 
   def all_sex
-    @@relatives[@clas][@sex].each { |name| puts name}
+    @@relatives[@klass][@sex].each { |name| puts name}
   end
 
   def search()
-    @@relatives.each do |clas|
+    @@relatives.each do |klass|
       Sex.all.each do |sex|
-        puts "is one of #{clas[0]} generation" if clas[1][sex].include? @name
+        puts "is one of #{klass[0]} generation" if klass[1][sex].include? @name
       end
     end
   end
 
   def self.tree
     order = [:GreatGrandParents,:GrandParents,:Parents,:EqualRelatives]
-    order.each do |clas|
-      if @@relatives[clas] != nil
-        puts "\n#{clas}"
-        @@relatives[clas].each do |sex|
+    order.each do |klass|
+      if @@relatives[klass] != nil
+        puts "\n#{klass}"
+        @@relatives[klass].each do |sex|
           sex.each do |names|
             if (names != nil && names != :man && names != :woman)
               names.each {|name| puts name}
@@ -59,6 +59,7 @@ include Sex
         end
       end
     end
+
   end
 
 end

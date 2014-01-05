@@ -3,7 +3,7 @@ require_relative 'grandparents'
 require_relative 'greatgrandparents'
 require_relative 'equalparents'
 
- tree = [GreatGrandParent,GrandParent,Parent,EqualRelative]
+tree = [GreatGrandParent,GrandParent,Parent,EqualRelative]
 
 def  interface
   puts "What do you like to do
@@ -31,7 +31,6 @@ def  interface
           22  - see Genealogic Tree
           0   -  exit\n\n"
 end
-
 
 def go_back
   system 'clear'
@@ -64,49 +63,49 @@ while input != 0
   interface
   input = gets.to_i
   case input
-    when   1  then go_back do
-        ask_name { |name| add(tree[0],name,2)}
-      end
-    when   2  then go_back do
-        ask_name { |name| add(tree[0],name,1)}
-      end
-    when   3  then go_back do
-        ask_name { |name| add(tree[1],name,2)}
-      end
-    when   4  then go_back do
-        ask_name { |name| add(tree[1],name,1)}
-      end
-    when   5  then go_back do
-        ask_name { |name| add(tree[2],name,2)}
-      end
-    when   6  then go_back do
-        ask_name { |name| add(tree[2],name,1)}
-      end
-    when   7  then go_back do
-        ask_name { |name| add(tree[3],name,2)}
-      end
-    when   8  then go_back do
-        ask_name { |name| add(tree[3],name,1)}
-      end
-    when   9  then go_back { all(tree[0],2,true) }
-    when   10 then go_back { all(tree[0],1,true) }
-    when   11 then go_back { all(tree[0],1,false) }
-    when   12 then go_back { all(tree[1],2,true) }
-    when   13 then go_back { all(tree[1],1,true) }
-    when   14 then go_back { all(tree[1],1,false) }
-    when   15 then go_back { all(tree[2],2,true) }
-    when   16 then go_back { all(tree[2],1,true) }
-    when   17 then go_back { all(tree[2],1,false) }
-    when   18 then go_back { all(tree[3],2,true) }
-    when   19 then go_back { all(tree[3],1,true) }
-    when   20 then go_back { all(tree[0],1,false) }
-    when   21 then go_back do
-          ask_name do |name|
-          great = GreatGrandParent.new(name,1)
-          great.search
-        end
-      end
-    when   22 then go_back {GreatGrandParent.tree}
+  when   1  then go_back do
+      ask_name { |name| add(tree[0],name,2)}
     end
+  when   2  then go_back do
+      ask_name { |name| add(tree[0],name,1)}
+    end
+  when   3  then go_back do
+      ask_name { |name| add(tree[1],name,2)}
+    end
+  when   4  then go_back do
+      ask_name { |name| add(tree[1],name,1)}
+    end
+  when   5  then go_back do
+      ask_name { |name| add(tree[2],name,2)}
+    end
+  when   6  then go_back do
+      ask_name { |name| add(tree[2],name,1)}
+    end
+  when   7  then go_back do
+      ask_name { |name| add(tree[3],name,2)}
+    end
+  when   8  then go_back do
+      ask_name { |name| add(tree[3],name,1)}
+    end
+  when   9  then go_back { all(tree[0],2,true) }
+  when   10 then go_back { all(tree[0],1,true) }
+  when   11 then go_back { all(tree[0],1,false) }
+  when   12 then go_back { all(tree[1],2,true) }
+  when   13 then go_back { all(tree[1],1,true) }
+  when   14 then go_back { all(tree[1],1,false) }
+  when   15 then go_back { all(tree[2],2,true) }
+  when   16 then go_back { all(tree[2],1,true) }
+  when   17 then go_back { all(tree[2],1,false) }
+  when   18 then go_back { all(tree[3],2,true) }
+  when   19 then go_back { all(tree[3],1,true) }
+  when   20 then go_back { all(tree[0],1,false) }
+  when   21 then go_back do
+        ask_name do |name|
+        great = GreatGrandParent.new(name,1)
+        great.search
+      end
+    end
+  when   22 then go_back {GreatGrandParent.tree}
   end
+end
 system 'clear'

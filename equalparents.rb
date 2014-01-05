@@ -1,6 +1,3 @@
 require_relative 'parents'
 
-class EqualRelative < Parent
-
-end
-
+class EqualRelative < Parent ; end

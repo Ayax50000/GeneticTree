@@ -6,15 +6,8 @@ module Sex
     @@sexes[num]
   end
 
-  def show()
-   @@sexes.each do |sex|
-     puts "#{sex[0]} #{sex[1]} "
-   end
-  end
-
   def self.all
     [:man,:woman]
   end
+
 end
-
-

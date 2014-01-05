@@ -1,6 +1,3 @@
 require_relative 'greatgrandparents'
 
-class GrandParent < GreatGrandParent
-
-end
-
+class GrandParent < GreatGrandParent; end

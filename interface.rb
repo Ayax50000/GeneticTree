@@ -3,6 +3,8 @@ require_relative 'grandparents'
 require_relative 'greatgrandparents'
 require_relative 'equalparents'
 
+ tree = [GreatGrandParent,GrandParent,Parent,EqualRelative]
+
 def  interface
   puts "What do you like to do
           1   - add Great Grand Mother
@@ -30,6 +32,7 @@ def  interface
           0   -  exit\n\n"
 end
 
+
 def go_back
   system 'clear'
   puts "\n" * 6
@@ -45,117 +48,65 @@ def ask_name
   yield name
 end
 
+def add(clas,name,sex)
+  great = clas.new(name,sex)
+  great.add
+end
+
+def all(clas,sex,filter)
+  great = GreatGrandParent.new(2)
+  (filter)? great.all_sex : great.all
+end
+
 input = nil
 while input != 0
   system 'clear'
   interface
   input = gets.to_i
   case input
-    when 1 then go_back do
-          ask_name do |name|
-          great = GreatGrandParent.new(name,2)
-          great.add
-        end
+    when   1  then go_back do
+        ask_name { |name| add(tree[0],name,2)}
       end
-    when   2 then go_back do
-          ask_name do |name|
-          great = GreatGrandParent.new(name,1)
-          great.add
-        end
+    when   2  then go_back do
+        ask_name { |name| add(tree[0],name,1)}
       end
-    when   3 then go_back do
-          ask_name do |name|
-          great = GrandParent.new(name,2)
-          great.add
-        end
+    when   3  then go_back do
+        ask_name { |name| add(tree[1],name,2)}
       end
-    when   4 then go_back do
-          ask_name do |name|
-          great = GrandParent.new(name,1)
-          great.add
-        end
+    when   4  then go_back do
+        ask_name { |name| add(tree[1],name,1)}
       end
-    when   5 then go_back do
-          ask_name do |name|
-          great = Parent.new(name,2)
-          great.add
-        end
+    when   5  then go_back do
+        ask_name { |name| add(tree[2],name,2)}
       end
-    when   6 then go_back do
-          ask_name do |name|
-          great = Parent.new(name,1)
-          great.add
-        end
+    when   6  then go_back do
+        ask_name { |name| add(tree[2],name,1)}
       end
-    when   7 then go_back do
-          ask_name do |name|
-          great = EqualRelative.new(name,2)
-          great.add
-        end
+    when   7  then go_back do
+        ask_name { |name| add(tree[3],name,2)}
       end
-    when   8 then go_back do
-          ask_name do |name|
-          great = EqualRelative.new(name,1)
-          great.add
-        end
+    when   8  then go_back do
+        ask_name { |name| add(tree[3],name,1)}
       end
-    when   9 then go_back do
-          great = GreatGrandParent.new(2)
-          great.all_sex
-        end
-    when   10 then go_back do
-        great = GreatGrandParent.new(1)
-        great.all_sex
-      end
-    when   11 then go_back do
-        great = GreatGrandParent.new(2)
-        great.all
-      end
-    when   12 then go_back do
-        great = GrandParent.new(2)
-        great.all_sex
-      end
-    when   13 then go_back do
-        great = GrandParent.new(1)
-        great.all_sex
-      end
-    when   14 then go_back do
-        great = GrandParent.new(1)
-        great.all
-      end
-    when   15 then go_back do
-        great = Parent.new(2)
-        great.all_sex
-      end
-    when   16 then go_back do
-        great = Parent.new(1)
-        great.all_sex
-      end
-    when   17 then go_back do
-        great = Parent.new(1)
-        great.all
-      end
-    when   18 then go_back do
-        great = EqualRelative.new(2)
-        great.all_sex
-      end
-    when   19 then go_back do
-        great = EqualRelative.new(1)
-        great.all_sex
-      end
-    when   20 then go_back do
-        great = EqualRelative.new(1)
-        great.all
-      end
+    when   9  then go_back { all(tree[0],2,true) }
+    when   10 then go_back { all(tree[0],1,true) }
+    when   11 then go_back { all(tree[0],1,false) }
+    when   12 then go_back { all(tree[1],2,true) }
+    when   13 then go_back { all(tree[1],1,true) }
+    when   14 then go_back { all(tree[1],1,false) }
+    when   15 then go_back { all(tree[2],2,true) }
+    when   16 then go_back { all(tree[2],1,true) }
+    when   17 then go_back { all(tree[2],1,false) }
+    when   18 then go_back { all(tree[3],2,true) }
+    when   19 then go_back { all(tree[3],1,true) }
+    when   20 then go_back { all(tree[0],1,false) }
     when   21 then go_back do
           ask_name do |name|
           great = GreatGrandParent.new(name,1)
           great.search
         end
       end
-    when   22 then go_back do
-        GreatGrandParent.tree
-      end
+    when   22 then go_back {GreatGrandParent.tree}
     end
   end
 system 'clear'

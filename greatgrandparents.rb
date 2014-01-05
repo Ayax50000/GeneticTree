@@ -4,17 +4,17 @@ class GreatGrandParent
 
 include Sex
 
-  @@relatives = {GreatGrandParents: {woman: nil,man: nil}}
+  @@relatives = {"GreatGrandParents" => {woman: nil,man: nil}}
 
   def initialize(name = "",sex)
     @name = name.upcase
     @sex = check(sex)
-    @klass = "#{self.class}s".to_sym
-    @super = "#{self.class.superclass}s".to_sym
+    @klass = "#{self.class}s"
+    @super = "#{self.class.superclass}s"
   end
 
   def add
-    if @klass == :GreatGrandParents
+    if @klass == "GreatGrandParents"
       if @@relatives[@klass][@sex] == nil
         @@relatives[@klass][@sex] = [@name]
       else
@@ -46,7 +46,7 @@ include Sex
   end
 
   def self.tree
-    order = [:GreatGrandParents,:GrandParents,:Parents,:EqualRelatives]
+    order = %w!GreatGrandParents GrandParents Parents EqualRelatives!
     order.each do |klass|
       if @@relatives[klass] != nil
         puts "\n#{klass}"
@@ -59,7 +59,6 @@ include Sex
         end
       end
     end
-
   end
 
 end

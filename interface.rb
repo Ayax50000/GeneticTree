@@ -53,7 +53,7 @@ def add(klass,name,sex)
 end
 
 def all(klass,sex,filter)
-  great = GreatGrandParent.new(2)
+  great = klass.new(2)
   (filter)? great.all_sex : great.all
 end
 

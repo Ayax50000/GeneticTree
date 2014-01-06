@@ -30,14 +30,18 @@ include Sex
   end
 
   def all
-    @@relatives[@klass].each { |name| puts name[1]}
+    if defined? @@relatives[@klass]
+      @@relatives[@klass].each { |name| puts name[1]}
+    end
   end
 
   def all_sex
-    @@relatives[@klass][@sex].each { |name| puts name}
+    if defined? @@relatives[@klass][@sex]
+      @@relatives[@klass][@sex].each { |name| puts name}
+    end
   end
 
-  def search()
+  def search
     @@relatives.each do |klass|
       Sex.all.each do |sex|
         puts "is one of #{klass[0]} generation" if klass[1][sex].include? @name
@@ -65,7 +69,7 @@ end
 
 class NilClass
 
-  def include?(param)
+  def include? param
     false
   end
 

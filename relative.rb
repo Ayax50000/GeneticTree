@@ -28,16 +28,15 @@ class Relative
 
   def self.all(klasses)
     klasses.each do |klass|
-    if defined? @@relatives[@klass]
-      @@relatives[klass].each { |name| puts name}
+      if defined? @@relatives[@klass]
+        @@relatives[klass].each { |name| puts name}
+      end
     end
   end
 
   def search
     @@relatives.each do |klass|
-      Sex.all.each do |sex|
-        puts "is one of #{klass[0]} generation" if klass[1][sex].include? @name
-      end
+        puts "is your #{klass} " if klass[1].include? @name
     end
   end
 

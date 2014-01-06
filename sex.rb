@@ -7,7 +7,7 @@ module Sex
   end
 
   def self.all
-    [:man,:woman]
+    @@sexes.values
   end
 
 end

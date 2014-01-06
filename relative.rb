@@ -1,8 +1,4 @@
-require_relative 'sex'
-
 class Relative
-
-include Sex
 
   @@relatives = {}
 
@@ -30,15 +26,10 @@ include Sex
     end
   end
 
-  def all
+  def self.all(klasses)
+    klasses.each do |klass|
     if defined? @@relatives[@klass]
-      @@relatives[@klass].each { |name| puts name[1]}
-    end
-  end
-
-  def all_sex
-    if defined? @@relatives[@klass][@sex]
-      @@relatives[@klass][@sex].each { |name| puts name}
+      @@relatives[klass].each { |name| puts name}
     end
   end
 

@@ -1,31 +1,32 @@
 require_relative 'sex'
 
-class GreatGrandParent
+class Relative
 
 include Sex
 
-  @@relatives = {"GreatGrandParents" => {woman: nil,man: nil}}
+  @@relatives = {}
 
   def initialize(name = "",sex)
     @name = name.upcase
-    @sex = check(sex)
-    @klass = "#{self.class}s"
-    @super = "#{self.class.superclass}s"
+    @klass = "#{self.class}"
+    @super = "#{self.class.superclass}"
+  end
+
+  def add_great
+    unless defined? @@relatives[@klass]
+      @@relatives[@klass] = @name
+    else
+      puts "ya tiene un #{@klass}"
+    end
   end
 
   def add
-    if @klass == "GreatGrandParents"
-      if @@relatives[@klass][@sex] == nil
-        @@relatives[@klass][@sex] = [@name]
-      else
-        puts "operation not posible"
-      end
-    elsif @@relatives[@super] != nil
-      @@relatives[@klass] ||= {}
-      @@relatives[@klass][@sex] ||= []
-      @@relatives[@klass][@sex] << @name
+    if @super == "Relative"
+      add_great
     else
-      puts "you need first to add a #{@super}"
+      @@relatives[@klass] ||= []
+      @@relatives[@klass] << @name
+      puts "#{@name} added as #{@klass}"
     end
   end
 

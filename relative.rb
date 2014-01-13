@@ -1,42 +1,42 @@
-class Relative
+module Relative
 
-  @@relatives = {}
+include Sex
 
-  def initialize(name = "",sex)
-    @name = name.upcase
-    @klass = "#{self.class}"
-    @super = "#{self.class.superclass}"
-  end
+@@relatives = {"GreatGrandParents" => {woman: nil,man: nil}}
 
-  def add_great
-    unless defined? @@relatives[@klass]
-      @@relatives[@klass] = @name
-    else
-      puts "ya tiene un #{@klass}"
-    end
-  end
-
-  def add
-    if @super == "Relative"
-      add_great
-    else
-      @@relatives[@klass] ||= []
-      @@relatives[@klass] << @name
-      puts "#{@name} added as #{@klass}"
-    end
-  end
-
-  def self.all(klasses)
-    klasses.each do |klass|
-      if defined? @@relatives[@klass]
-        @@relatives[klass].each { |name| puts name}
+def add
+    if @klass == "GreatGrandParents"
+      if @@relatives[@klass][@sex] == nil
+        @@relatives[@klass][@sex] = [@name]
+      else
+        puts "operation not posible"
       end
+    elsif @@relatives[@super] != nil
+      @@relatives[@klass] ||= {}
+      @@relatives[@klass][@sex] ||= []
+      @@relatives[@klass][@sex] << @name
+    else
+      puts "you need first to add a #{@super}"
+    end
+  end
+
+  def all
+    if defined? @@relatives[@klass]
+      @@relatives[@klass].each { |name| puts name[1]}
+    end
+  end
+
+  def all_sex
+    if defined? @@relatives[@klass][@sex]
+      @@relatives[@klass][@sex].each { |name| puts name}
     end
   end
 
   def search
     @@relatives.each do |klass|
-        puts "is your #{klass} " if klass[1].include? @name
+      Sex.all.each do |sex|
+        puts "is one of #{klass[0]} generation" if klass[1][sex].include? @name
+      end
     end
   end
 

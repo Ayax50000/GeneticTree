@@ -1,9 +1,9 @@
+require_rekative 'relative.rb'
 class GreatGrandParent
 
-include Sex
-include Relative
 
-  @@relatives = {"GreatGrandParents" => {woman: nil,man: nil}}
+
+include Relative
 
   def initialize(name = "",sex)
     @name = name.upcase

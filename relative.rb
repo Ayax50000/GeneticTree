@@ -1,7 +1,5 @@
 module Relative
 
-include Sex
-
 @@relatives = {"GreatGrandParents" => {woman: nil,man: nil}}
 
 def add
@@ -62,6 +60,20 @@ class NilClass
 
   def include? param
     false
+  end
+
+end
+
+module Sex
+
+  @@sexes = {1 => :man, 2 => :woman}
+
+  def check(num)
+    @@sexes[num]
+  end
+
+  def self.all
+    @@sexes.values
   end
 
 end

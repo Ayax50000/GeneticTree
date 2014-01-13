@@ -1,19 +1,8 @@
-require_relative 'sex'
+module Relative
 
-class GreatGrandParent
+@@relatives = {"GreatGrandParents" => {woman: nil,man: nil}}
 
-include Sex
-
-  @@relatives = {"GreatGrandParents" => {woman: nil,man: nil}}
-
-  def initialize(name = "",sex)
-    @name = name.upcase
-    @sex = check(sex)
-    @klass = "#{self.class}s"
-    @super = "#{self.class.superclass}s"
-  end
-
-  def add
+def add
     if @klass == "GreatGrandParents"
       if @@relatives[@klass][@sex] == nil
         @@relatives[@klass][@sex] = [@name]
@@ -71,6 +60,20 @@ class NilClass
 
   def include? param
     false
+  end
+
+end
+
+module Sex
+
+  @@sexes = {1 => :man, 2 => :woman}
+
+  def check(num)
+    @@sexes[num]
+  end
+
+  def self.all
+    @@sexes.values
   end
 
 end
